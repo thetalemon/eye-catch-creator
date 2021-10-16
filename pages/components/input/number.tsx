@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {InputLabel,InputAreaDiv} from './inputStyle'
+import {InputLabel,InputAreaDiv} from '../../../styles/input/style'
 
 type PropsType = {
   onChange: Function,

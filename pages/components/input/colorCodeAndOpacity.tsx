@@ -1,18 +1,8 @@
 import React, {useState} from 'react';
-import {convertColorCode2RgbObject} from '../helper/rgbHelper'
+import {convertColorCode2RgbObject} from '../../../helper/rgbHelper'
 import styled from '@emotion/styled'
+import {InputLabel,InputAreaDiv} from '../../../styles/input/style'
 
-export const InputLabel = styled.label`
-display: block;
-margin-right: 8px;
-`
-
-export const InputAreaDiv = styled.div`
-display: flex;
-margin-left: 8px;
-margin-top: 4px;
-width: 320px;
-`
 export const ColorInput = styled.input`
 margin-right: 16px;
 `

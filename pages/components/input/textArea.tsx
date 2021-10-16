@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {InputLabel,InputAreaDiv} from './inputStyle'
+import {InputLabel,InputAreaDiv} from '../../../styles/input/style'
 
 type PropsType = {
   onChange: Function,
@@ -8,7 +8,7 @@ type PropsType = {
 
 function InputText(props: PropsType) {
   const [text, setText] = useState('')
-  const handleChangeText = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChangeText = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     setText(() => event.target.value)
     props.onChange(event.target.value)
   }
@@ -16,7 +16,7 @@ function InputText(props: PropsType) {
   return (
     <InputAreaDiv>
       <InputLabel htmlFor="text">{props.labelText}: </InputLabel>
-      <input id="text" value={text} onChange={handleChangeText} type="text" />
+      <textarea id="text" value={text} onChange={handleChangeText} />
     </InputAreaDiv>
   );
 }
