@@ -8,5 +8,4 @@ margin-right: 8px;
 export const InputAreaDiv = styled.div`
 display: flex;
 margin-top: 4px;
-width: 320px;
 `
