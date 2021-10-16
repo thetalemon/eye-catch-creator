@@ -12,13 +12,21 @@ width: 50%;
 object-fit: cover;
 height: auto;
 `
+const ResultCanvasWrapper = styled.div`
+text-align: center;
+margin-top: 24px;
+`
 const ResultCanvas = styled.canvas`
 width: 100%;
+max-width: 600px;
 `
 const InputAreaDiv = styled.div`
 margin-left: 24px;
 `
-
+const InputsAreaDiv = styled.div`
+  width: 320px;
+  margin: 0 auto;
+`
 const DownloadButtonWrapper = styled.p`
   text-align: center;
 `
@@ -178,10 +186,13 @@ function Canvas() {
       <PreviewImage ref={outputImgRef} src={selectedImg} width={canvasWidth} height={canvasHeight} />
     );
 
-  const PreviewCanvasBranch: '' | JSX.Element = selectedImg === '' || text　=== ''
+  const ResultCanvasBranch: '' | JSX.Element = selectedImg === '' || text　=== ''
     ? ''
     : (
-      <ResultCanvas width={canvasWidth} height={canvasHeight} ref={canvasRef} />
+      <ResultCanvasWrapper>
+        <TitleH2>プレビュー</TitleH2>
+        <ResultCanvas width={canvasWidth} height={canvasHeight} ref={canvasRef} />
+      </ResultCanvasWrapper>
     );
 
   const DownloadButtonBranch: '' | JSX.Element = selectedImg === '' || text　=== ''
@@ -198,58 +209,60 @@ function Canvas() {
   
   return (
     <div>
-      <TitleH2>背景画像</TitleH2>
-      <InputAreaDiv>
-        ※1280×670以上の画像を選んでください<br />
-        <input
-          type="file"
-          accept="image/*"
-          onChange={handleChangeImg}
-        /> <br />
-        {PreviewImgBranch}
-      </InputAreaDiv>
+      <InputsAreaDiv>
+        <TitleH2>背景画像</TitleH2>
+        <InputAreaDiv>
+          ※1280×670以上の画像を選んでください<br />
+          <input
+            type="file"
+            accept="image/*"
+            onChange={handleChangeImg}
+          /> <br />
+          {PreviewImgBranch}
+        </InputAreaDiv>
 
-      <TitleH2>文字</TitleH2>
-      <InputAreaDiv>
-        <InputTextArea
-          onChange={handleChangeText}
-          labelText="文字"
-        />
-        <InputNumber
-          onChange={handleChangeFontSize}
-          defaultValue={60}
-          labelText="フォントサイズ"
-        />
-        <InputColorCodeAndOpacity
-          onChange={handleChangeTextColor}
-          labelText="文字の背景"
-          defaultValue="#000000"
-          defaultOpacity={1}
-          onChangeOpacity={handleChangeTextOpacity}
-        />
-      </InputAreaDiv>
-      <TitleH2>文字の背景</TitleH2>
-      <InputAreaDiv>
-        <InputColorCodeAndOpacity
-          onChange={handleChangeBackgoundColor}
-          labelText="文字"
-          defaultValue="#ffffff"
-          defaultOpacity={0.5}
-          onChangeOpacity={handleChangeBackgroundOpacity}
-        />
-        <InputNumber
-          onChange={handleChangeYMargin}
-          defaultValue={25}
-          labelText="上下のふち"
-        />
-        <InputNumber
-          onChange={handleChangeXMargin}
-          defaultValue={10}
-          labelText="左右のふち"
-        />
-      </InputAreaDiv>
-      <TitleH2>プレビュー</TitleH2>
-      { PreviewCanvasBranch }
+        <TitleH2>文字</TitleH2>
+        <InputAreaDiv>
+          <InputTextArea
+            onChange={handleChangeText}
+            labelText="文字"
+          />
+          <InputNumber
+            onChange={handleChangeFontSize}
+            defaultValue={60}
+            labelText="フォントサイズ"
+          />
+          <InputColorCodeAndOpacity
+            onChange={handleChangeTextColor}
+            labelText="文字の背景"
+            defaultValue="#000000"
+            defaultOpacity={1}
+            onChangeOpacity={handleChangeTextOpacity}
+          />
+        </InputAreaDiv>
+        <TitleH2>文字の背景</TitleH2>
+        <InputAreaDiv>
+          <InputColorCodeAndOpacity
+            onChange={handleChangeBackgoundColor}
+            labelText="文字"
+            defaultValue="#ffffff"
+            defaultOpacity={0.5}
+            onChangeOpacity={handleChangeBackgroundOpacity}
+          />
+          <InputNumber
+            onChange={handleChangeYMargin}
+            defaultValue={25}
+            labelText="上下のふち"
+          />
+          <InputNumber
+            onChange={handleChangeXMargin}
+            defaultValue={10}
+            labelText="左右のふち"
+          />
+        </InputAreaDiv>
+
+      </InputsAreaDiv>
+      { ResultCanvasBranch }
       { DownloadButtonBranch }
     </div>
   );
